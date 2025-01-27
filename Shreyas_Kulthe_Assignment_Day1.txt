@@ -1,0 +1,228 @@
+1. Ans: [admin@hostname01 Desktop]$ pwd
+/home/admin/Desktop
+
+2. Ans : [admin@hostname01 Desktop]$ echo $HOME
+   Output: /home/admin
+
+3. Ans: [admin@hostname01 Desktop]$ whoami
+   Output: admin
+
+4. Ans: [admin@hostname01 Desktop]$ ls –a
+   Output: .   .bash_history  .bash_profile  .cache   Desktop    Downloads  .mozilla  Pictures         
+  		..  .bash_logout   .bashrc        .config  Documents  .local     Music     Public    Videos
+
+5. Ans: [admin@hostname01 Desktop]$ ls $HOME
+   Output: Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+
+6. Ans: [admin@hostname01 Desktop]$ ls -l
+   Output: total 0
+	   drwxr-xr-x. 2 admin admin  6 Dec 24 19:53 Desktop
+	   drwxr-xr-x. 2 admin admin  6 Aug 25  2022 Documents
+	   drwxr-xr-x. 2 admin admin 50 Aug 25  2022 Downloads
+	   drwxr-xr-x. 2 admin admin  6 Aug 25  2022 Music
+	   drwxr-xr-x. 2 admin admin  6 Aug 25  2022 Pictures
+	   drwxr-xr-x. 2 admin admin  6 Aug 25  2022 Public
+	   drwxr-xr-x. 2 admin admin  6 Aug 25  2022 Templates
+	   drwxr-xr-x. 2 admin admin  6 Aug 25  2022 Videos
+
+7. 
+
+8. Ans: [admin@hostname01 ~]$ mkdir ~C_prog
+
+9. Ans: [admin@hostname01 ~]$ mkdir ~C_prog
+         [admin@hostname01 ~]$ mkdir ~/newdirectory ~/newdir
+   Output: [admin@hostname01 ~]$ ls
+	'~C_prog'   Desktop   Documents   Downloads   Music   newdir   newdirectory   Pictures   Public   Templates   	Videos
+
+10. Ans: [admin@hostname01 ~]$ ls -R ~
+    Output: /home/admin:
+'~C_prog'   Desktop   Documents   Downloads   Music   newdir   newdirectory   Pictures   Public   Templates   Videos
+	
+/home/admin/~C_prog:
+
+/home/admin/Desktop:
+
+/home/admin/Documents:
+
+/home/admin/Downloads:
+photo-1603366615917-1fa6dad5c4fa.jpg
+
+/home/admin/Music:
+
+/home/admin/newdir:
+
+/home/admin/newdirectory:
+
+/home/admin/Pictures:
+
+/home/admin/Public:
+
+/home/admin/Templates:
+
+11. Ans: [admin@hostname01 ~]$ rmdir newdirectory
+    Output: '~C_prog'   Desktop   Documents   Downloads   Music   newdir   Pictures   Public               Templates   Videos
+
+12. Ans: [admin@hostname01 ~]$ mkdir ~/temp
+    Output: '~C_prog'   Desktop   Documents   Downloads   Music   newdir   Pictures   Public   temp   Templates   Videos
+
+13. Ans: [admin@hostname01 ~]$ rmdir ~/newdir
+    Output: [admin@hostname01 ~]$ ls
+	'~C_prog'   Desktop   Documents   Downloads   Music   Pictures   Public   temp   Templates   Videos
+
+14. Ans: [admin@hostname01 ~]$ mkdir ~/temp/directorynew
+
+15. Ans: [admin@hostname01 ~]$ cd ~
+
+16. Ans: [admin@hostname01 ~]$ cd ../directorynew
+	 [admin@hostname01 ~]$ cd ~/directorynew
+
+17. Ans: [admin@hostname01 ~]$ rmdir ~/C_prog
+
+18. Ans: [admin@hostname01 ~]$ cd /etc
+	 [admin@hostname01 etc]$ ls
+    Output:accountsservice         crypto-policies          gcrypt        libaudit.conf             nftables           resolv.conf        sysconfig
+	adjtime                 crypttab                 gdm           libblockdev               nsswitch.conf      rpc                sysctl.conf
+	aliases                 csh.cshrc                geoclue       libibverbs.d              nsswitch.conf.bak  rpm                sysctl.d
+	alsa                    csh.login                glvnd         libnl                     nvme               rsyncd.conf        systemd
+	alternatives            cups                     gnupg         libpaper.d                openldap           rsyslog.conf       system-	release
+
+19. Ans: [admin@hostname01 etc]$ ls -a /usr/bin directory | grep'^\.'
+
+20. Ans: [admin@hostname01 etc]$ touch first.unix
+	 [admin@hostname01 etc]$ echo "Hi! Good Morning everybody.Welcome to the first exercise on UNIX Hope you enjoy doing the assignments"
+    Output: Hi! Good Morning everybody.Welcome to the first exercise on UNIX Hope you enjoy doing the assignments
+
+21. Ans: [admin@hostname01 ~]$ cp ~/first.unix ~/first.unics
+	[admin@hostname01 ~]$ ls ~
+    Output: '~C_prog'   Desktop   Documents   Downloads   first.unics   first.unix   Music   Pictures   Public   temp   Templates   Videos
+
+22. Ans: [admin@hostname01 ~]$ cat ~/first.unix ~/first,unics
+	Hi! Good Morning everybody. 
+              Welcome to the First exercise on UNIX. 
+              Hope you enjoy doing the assignments. 
+
+23. Ans: [admin@hostname01 ~]$ mkdir temp/newdir1
+
+24. Ans: [admin@hostname01 ~]$ cp ~/*temp/newdir1
+
+25. Ans: [admin@hostname01 ~]$ mv ~/first.unix temp/second.unix
+
+26. Ans: [admin@hostname01 ~]$ rm first.unics
+
+27. Ans: [admin@hostname01 ~]$ cd temp
+	 [admin@hostname01 temp]$ rm
+
+28. Ans: [admin@hostname01 temp]$ mv *[aco]~
+
+29. Ans: [admin@hostname01 temp]$ cp *UNIX temp/
+
+30. Ans: [admin@hostname01 temp]$ rm -rf temp
+
+31. Ans: [admin@hostname01 temp]$ cp
+	 [admin@hostname01 temp]$ mv
+
+32. Ans: [admin@hostname01 temp]$ cat > friends
+                  Madhu              6966456                  09/07/68 
+                  Jamil              2345215                     08/09/67 
+                  Ajay               5546785                     01/04/66 
+                  Mano               7820022                  09/07/68 
+                  David              8281292                  09/09/60 
+                  Simmi              7864563                  12/12/70 
+                  Navin              2224311                  30/05/68 
+
+33. Ans: 
+                  Madhu              6966456                  09/07/68 
+                  Jamil              2345215                     08/09/67 
+                  Ajay               5546785                     01/04/66 
+                  Mano               7820022                  09/07/68 
+                  David              8281292                  09/09/60 
+                  Simmi              7864563                  12/12/70 
+                  Navin              2224311                  30/05/68 
+
+34. Ans: [admin@hostname01 temp]$ cat friends>newfriends
+
+35. Ans: [admin@hostname01 temp]$ cat > friends
+                  Madhu              6966456                  09/07/68 
+                  Jamil              2345215                     08/09/67 
+                  Ajay               5546785                     01/04/66 
+                  Mano               7820022                  09/07/68 
+                  David              8281292                  09/09/60 
+                  Simmi              7864563                  12/12/70 
+                  Navin              2224311                  30/05/68 
+[admin@hostname01 temp]$ cat friends>newfriends
+[admin@hostname01 temp]$ cat friends newfriends
+                  Madhu              6966456                  09/07/68 
+                  Jamil              2345215                     08/09/67 
+                  Ajay               5546785                     01/04/66 
+                  Mano               7820022                  09/07/68 
+                  David              8281292                  09/09/60 
+                  Simmi              7864563                  12/12/70 
+                  Navin              2224311                  30/05/68 
+                  Madhu              6966456                  09/07/68 
+                  Jamil              2345215                     08/09/67 
+                  Ajay               5546785                     01/04/66 
+                  Mano               7820022                  09/07/68 
+                  David              8281292                  09/09/60 
+                  Simmi              7864563                  12/12/70 
+                  Navin              2224311                  30/05/68 
+
+36. Ans: [admin@hostname01 temp]$ who > users
+	[admin@hostname01 temp]$ cat users
+	admin    seat0        2025-01-27 12:16 (login screen)
+	admin    tty2         2025-01-27 12:16 (tty2)
+
+37. Ans: [admin@hostname01 temp]$ cat friends >> users
+
+38. Ans: [admin@hostname01 temp]$ date
+	Mon Jan 27 07:52:58 PM IST 2025
+
+39. Ans: [admin@hostname01 temp]$ cal 02 2003
+    February 2003   
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28   
+
+40. Ans: [admin@hostname01 temp]$ date "+%"
+%
+[admin@hostname01 temp]$ date "+%m"
+01
+[admin@hostname01 temp]$ date "+%D"
+01/27/25
+[admin@hostname01 temp]$ date "+/%Training Activity"
+/19:59:06raining Activity
+[admin@hostname01 temp]$ date "+%Training Activity"
+20:00:07raining Activity
+[admin@hostname01 temp]$ date "+%r"
+08:00:32 PM
+
+
+USING PIPES AND FILTERS
+
+1. Ans: [admin@hostname01 temp]$ ls --help>lsdoc
+
+2. Ans: [admin@hostname01 temp]$ less lsdoc
+
+3. Ans: [admin@hostname01 Desktop]$ cat > data.txt
+Hello
+
+4. Ans: [admin@hostname01 Desktop]$ cat data.txt
+Hello
+
+5. Ans: [admin@hostname01 Desktop]$ rm data.txt
+
+6. Ans: [admin@hostname01 Desktop]$ cat data.txt 2>errorlog.txt
+
+7. Ans: [admin@hostname01 Desktop]$ cat errorlog.txt
+
+
+
+
+
+	
+
+
+
+
