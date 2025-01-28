@@ -1,0 +1,169 @@
+Working with a Vi Editor:
+
+1. Ans: root@hostname01 ~]# vi network_info.txt
+
+A network is a group of computers that can communicate with each other, share resources, and access remote hosts or other networks. Netware is a computer network operating system designed to connect, manage, and maintain a network and its services. Some of the network services are Netware Directory Services (NDS), file system, printing and security.
+
+Working shell
+
+2. Ans: This is a shell example
+
+1. ctrl+b
+
+2. ctrl+f
+
+3. ctrl+a
+
+4. ctrl+e
+
+5. ctrl+k
+
+6. ctrl+u
+
+2. [admin@hostname01 Desktop]$ cat errorlog.txt
+
+3. [admin@hostname01 Desktop]$ history
+
+4.[admin@hostname01 Desktop]$ history | grep 1s
+
+5. [admin@hostname01 Desktop]$ ]!!
+
+6. [admin@hostname01 Desktop]$ 13 passwd root
+
+7. [admin@hostname01 Desktop]$ cat /etc/shells
+
+/bin/sh
+
+/bin/bash
+
+/usr/bin/sh
+
+/usr/bin/bash
+
+Understanding access permissions
+
+[admin@hostname01 Desktop]$ touch demofile
+
+1. [admin@hostname01 Desktop]$ chmod u-r demofile [admin@hostname01 Desktop]$ cat demofile cat: demofile: Permission denied
+
+2. [admin@hostname01 Desktop]$ vi demofile "demofile" [Permission Denied]
+
+3. [admin@hostname01 Desktop]$ chmod utrw demofile
+
+4. [admin@hostname01 Desktop]$ chmod go-wx demofile
+
+5. [admin@hostname01 Desktop]$ chmod g+w demofile
+
+6. [admin@hostname01 Desktop]$ chmod a+r demofile
+
+7. [admin@hostname01 Desktop]$ chmod or demofile
+
+8. [admin@hostname01 Desktop]$ chmod u+x chap1
+
+9. [admin@hostname01 Desktop]$ chmod a+x add.c
+
+10. [admin@hostname01 Desktop]$ chmod u-x, g+r, or aa.c
+
+11. [admin@hostname01 Desktop]$ chmod u+x kk.s nato myfile
+
+[admin@hostname01 Desktop]$ mkdir demo
+
+[admin@hostname01 Desktop]$ cp /etc/passwd demo
+
+1. [admin@hostname01 Desktop]$ 1s demo
+
+passwd
+
+2. [admin@hostname01 Desktop]$ chmod -r demo
+
+[admin@hostname01 Desktop]$ ls demo
+
+1s: cannot open directory 'demo': Permission denied
+
+3. [admin@hostname01 Desktop]$ chmod -w demo [admin@hostname01 Desktop]$ cp/etc/profile demo
+
+cp: cannot create regular file 'demo/profile': Permission denied
+
+4. [admin@hostname01 Desktop]$ chmod +w demo [admin@hostname01 Desktop]$ rm demo/passwd
+
+5. [admin@hostname01 Desktop]$ chmod -x demo
+
+[admin@hostname01 Desktop]$ cd demo
+
+bash: cd: demo: Permission denied
+
+Using Process-Related Commands
+
+1. [admin@hostname01 Desktop]$ ps -u $(whoami)
+
+PID TTY
+
+TIME CMD
+
+2239 ?
+
+00:00:02 systemd
+
+2241 ?
+
+00:00:00 (sd-pam)
+
+2257 ?
+
+00:00:00 gnome-keyring-d
+
+2262 tty2
+
+00:00:00 gdm-wayland-ses 00:00:00 dbus-broker-lau
+
+2265 ?
+
+00:00:02 dbus-broker
+
+2268 ?
+
+00:00:00 gnome-session-b
+
+2. [admin@hostname01 Desktop]$ ps -e
+
+3. [admin@hostname01 Desktop]$ sleep 300 &
+
+[admin@hostname01 Desktop]$ jobs -1
+
+[1]+ 8860 Running
+
+sleep 300 &
+
+[admin@hostname01 Desktop]$ ps -p <PID>
+
+4. [admin@hostname01 Desktop]$ ping google.com > /dev/null &
+
+[2] 8885
+
+5. [admin@hostname01 Desktop]$ fg
+
+sleep 300
+
+6. [admin@hostname01 Desktop]$ sleep 100& [1] 8925
+
+[admin@hostname01 Desktop]$ sleep 200 &
+
+[2] 8930 [admin@hostname01 Desktop]$ sleep 300 & [3] 8935
+
+[admin@hostname01 Desktop]$ fg %1 sleep 100
+
+7. ctrl+z
+
+8. [admin@hostname01 Desktop]$ bg [1]+ sleep 100 &
+
+9. [admin@hostname01 Desktop]$ sleep 500
+
+10. [admin@hostname01 Desktop]$ kill %<8835>
+
+11.
+
+[admin@hostname01 Desktop]$ kill -9 8896
+
+12. [admin@hostname01 Desktop]$ nice n-10 1s
+
+13. [admin@hostname01 Desktop]$ crontab -e **** date >> /path/to/logfile
