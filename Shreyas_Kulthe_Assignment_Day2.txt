@@ -1,54 +1,57 @@
 Working with a Vi Editor:
 
 1. Ans: root@hostname01 ~]# vi network_info.txt
+	A network is a group of computers that can communicate with each other, share  
 
-A network is a group of computers that can communicate with each other, share resources, and access remote hosts or other networks. Netware is a computer network operating system designed to connect, manage, and maintain a network and its services. Some of the network services are Netware Directory Services (NDS), file system, printing and security.
+         resources, and access remote hosts or other networks. Netware is a computer network  
 
-Working shell
+         operating system designed to connect, manage, and maintain a network and its  
+
+         services. Some of the network services are Netware Directory Services (NDS), file  
+
+         system, printing and security.
+
+Working shell  
 
 2. Ans: This is a shell example
+	1. ctrl+b
+	2. ctrl+f
+	3. ctrl+a
+	4. ctrl+e
+	5. ctrl+k
+	6. ctrl+u
 
-1. ctrl+b
 
-2. ctrl+f
 
-3. ctrl+a
-
-4. ctrl+e
-
-5. ctrl+k
-
-6. ctrl+u
-
-2. [admin@hostname01 Desktop]$ cat errorlog.txt
+2. [admin@hostname01 Desktop]$ cat errorlog.txt 
 
 3. [admin@hostname01 Desktop]$ history
 
-4.[admin@hostname01 Desktop]$ history | grep 1s
+4.[admin@hostname01 Desktop]$ history | grep ls
 
 5. [admin@hostname01 Desktop]$ ]!!
 
-6. [admin@hostname01 Desktop]$ 13 passwd root
+6. [admin@hostname01 Desktop]$ !3
+passwd root
 
 7. [admin@hostname01 Desktop]$ cat /etc/shells
-
 /bin/sh
-
 /bin/bash
-
 /usr/bin/sh
-
 /usr/bin/bash
 
-Understanding access permissions
+Understanding access permissions 
 
 [admin@hostname01 Desktop]$ touch demofile
 
-1. [admin@hostname01 Desktop]$ chmod u-r demofile [admin@hostname01 Desktop]$ cat demofile cat: demofile: Permission denied
+1. [admin@hostname01 Desktop]$ chmod u-r demofile
+[admin@hostname01 Desktop]$ cat demofile
+cat: demofile: Permission denied
 
-2. [admin@hostname01 Desktop]$ vi demofile "demofile" [Permission Denied]
+2. [admin@hostname01 Desktop]$ vi demofile
+ "demofile" [Permission Denied]
 
-3. [admin@hostname01 Desktop]$ chmod utrw demofile
+3.   [admin@hostname01 Desktop]$ chmod u+rw demofile
 
 4. [admin@hostname01 Desktop]$ chmod go-wx demofile
 
@@ -56,114 +59,100 @@ Understanding access permissions
 
 6. [admin@hostname01 Desktop]$ chmod a+r demofile
 
-7. [admin@hostname01 Desktop]$ chmod or demofile
+7. [admin@hostname01 Desktop]$ chmod o-r demofile
 
 8. [admin@hostname01 Desktop]$ chmod u+x chap1
 
 9. [admin@hostname01 Desktop]$ chmod a+x add.c
 
-10. [admin@hostname01 Desktop]$ chmod u-x, g+r, or aa.c
+10. [admin@hostname01 Desktop]$ chmod u-x, g+r, o+r aa.c
 
 11. [admin@hostname01 Desktop]$ chmod u+x kk.s nato myfile
 
-[admin@hostname01 Desktop]$ mkdir demo
 
+[admin@hostname01 Desktop]$ mkdir demo
 [admin@hostname01 Desktop]$ cp /etc/passwd demo
 
-1. [admin@hostname01 Desktop]$ 1s demo
-
+1. [admin@hostname01 Desktop]$ ls demo
 passwd
 
 2. [admin@hostname01 Desktop]$ chmod -r demo
-
 [admin@hostname01 Desktop]$ ls demo
+ls: cannot open directory 'demo': Permission denied
 
-1s: cannot open directory 'demo': Permission denied
-
-3. [admin@hostname01 Desktop]$ chmod -w demo [admin@hostname01 Desktop]$ cp/etc/profile demo
-
+3. [admin@hostname01 Desktop]$ chmod -w demo
+[admin@hostname01 Desktop]$ cp /etc/profile demo
 cp: cannot create regular file 'demo/profile': Permission denied
 
-4. [admin@hostname01 Desktop]$ chmod +w demo [admin@hostname01 Desktop]$ rm demo/passwd
+4. [admin@hostname01 Desktop]$ chmod +w demo
+[admin@hostname01 Desktop]$ rm demo/passwd
 
 5. [admin@hostname01 Desktop]$ chmod -x demo
-
 [admin@hostname01 Desktop]$ cd demo
-
 bash: cd: demo: Permission denied
 
-Using Process-Related Commands
+Using Process-Related Commands  
+
 
 1. [admin@hostname01 Desktop]$ ps -u $(whoami)
+	PID TTY          TIME CMD
+   2239 ?        00:00:02 systemd
+   2241 ?        00:00:00 (sd-pam)
+   2257 ?        00:00:00 gnome-keyring-d
+   2262 tty2     00:00:00 gdm-wayland-ses
+   2265 ?        00:00:00 dbus-broker-lau
+   2268 ?        00:00:02 dbus-broker
+   2271 tty2     00:00:00 gnome-session-b
 
-PID TTY
-
-TIME CMD
-
-2239 ?
-
-00:00:02 systemd
-
-2241 ?
-
-00:00:00 (sd-pam)
-
-2257 ?
-
-00:00:00 gnome-keyring-d
-
-2262 tty2
-
-00:00:00 gdm-wayland-ses 00:00:00 dbus-broker-lau
-
-2265 ?
-
-00:00:02 dbus-broker
-
-2268 ?
-
-00:00:00 gnome-session-b
-
-2. [admin@hostname01 Desktop]$ ps -e
+2.  [admin@hostname01 Desktop]$ ps -e
+    PID TTY          TIME CMD
+      1 ?        00:00:04 systemd
+      2 ?        00:00:00 kthreadd
+      3 ?        00:00:00 pool_workqueue_
+      4 ?        00:00:00 kworker/R-rcu_g
+      5 ?        00:00:00 kworker/R-sync_
+      6 ?        00:00:00 kworker/R-slub_
+      7 ?        00:00:00 kworker/R-netns
+     10 ?        00:00:00 kworker/u512:0-events_unbound
+     11 ?        00:00:00 kworker/R-mm_pe
 
 3. [admin@hostname01 Desktop]$ sleep 300 &
-
-[admin@hostname01 Desktop]$ jobs -1
-
-[1]+ 8860 Running
-
-sleep 300 &
-
+[1] 8860
+[admin@hostname01 Desktop]$ jobs -l
+[1]+  8860 Running                 sleep 300 &
 [admin@hostname01 Desktop]$ ps -p <PID>
 
 4. [admin@hostname01 Desktop]$ ping google.com > /dev/null &
-
 [2] 8885
 
 5. [admin@hostname01 Desktop]$ fg
-
 sleep 300
 
-6. [admin@hostname01 Desktop]$ sleep 100& [1] 8925
-
+6. [admin@hostname01 Desktop]$ sleep 100&
+[1] 8925
 [admin@hostname01 Desktop]$ sleep 200 &
-
-[2] 8930 [admin@hostname01 Desktop]$ sleep 300 & [3] 8935
-
-[admin@hostname01 Desktop]$ fg %1 sleep 100
+[2] 8930
+[admin@hostname01 Desktop]$ sleep 300 &
+[3] 8935
+[admin@hostname01 Desktop]$ fg %1
+sleep 100
 
 7. ctrl+z
 
-8. [admin@hostname01 Desktop]$ bg [1]+ sleep 100 &
+8. [admin@hostname01 Desktop]$ bg
+[1]+ sleep 100 &
 
 9. [admin@hostname01 Desktop]$ sleep 500
 
 10. [admin@hostname01 Desktop]$ kill %<8835>
 
-11.
+11. [admin@hostname01 Desktop]$ kill -9 8896
 
-[admin@hostname01 Desktop]$ kill -9 8896
+12. [admin@hostname01 Desktop]$ nice -n -10 ls
 
-12. [admin@hostname01 Desktop]$ nice n-10 1s
+13. [admin@hostname01 Desktop]$ crontab -e
+0 **** date >> /path/to/logfile
 
-13. [admin@hostname01 Desktop]$ crontab -e **** date >> /path/to/logfile
+ 
+
+
