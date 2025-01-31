@@ -1,0 +1,286 @@
+1. [admin@hostname01 Desktop]$ man ls>lsdoc
+
+2. [admin@hostname01 Desktop]$ less lsdoc
+
+3. [admin@hostname01 Desktop]$ head -n 4 lsdoc
+
+4. [admin@hostname01 Desktop]$ head -n 4 lsdoc
+
+5. [admin@hostname01 Desktop]$ rm lsdoc
+
+6. [admin@hostname01 Desktop]$ cut -d ' ' -f 2 friends | sort | uniq -c
+
+7. [admin@hostname01 Desktop]$ grep '^Ma' friends
+
+8. 
+
+9. [admin@hostname01 Desktop]$ find . -type f
+
+10. [admin@hostname01 Desktop]$ find . -type d
+
+11. [admin@hostname01 Desktop]$ find . -type f -name 'chap*'
+
+12. [admin@hostname01 Desktop]$ sort friends
+
+13. [admin@hostname01 Desktop]$ cat friends | tr 'a-z' 'A-Z'
+
+14. [admin@hostname01 Desktop]$ ls -l ~ > dir
+
+15. [admin@hostname01 Desktop]$ awk '{print $1, $9}' dir
+total 
+drwxr-xr-x. ~C_prog
+drwxr-xr-x. Desktop
+drwxr-xr-x. Documents
+drwxr-xr-x. Downloads
+drwxr-xr-x. Music
+drwxr-xr-x. Pictures
+drwxr-xr-x. Public
+drwxr-xr-x. temp
+drwxr-xr-x. Templates
+drwxr-xr-x. Videos
+
+16. [admin@hostname01 Desktop]$ awk '{print $9}' dir > files
+
+17. [admin@hostname01 Desktop]$ awk '{print $1}' dir > perms
+
+18. [admin@hostname01 Desktop]$ awk '{print $5}' dir > sizes
+
+19. [admin@hostname01 Desktop]$ awk '{print $9, $5, $1}' dir
+  total
+~C_prog 6 drwxr-xr-x.
+Desktop 78 drwxr-xr-x.
+Documents 6 drwxr-xr-x.
+Downloads 50 drwxr-xr-x.
+Music 6 drwxr-xr-x.
+Pictures 6 drwxr-xr-x.
+Public 6 drwxr-xr-x.
+temp 139 drwxr-xr-x.
+Templates 6 drwxr-xr-x.
+Videos 6 drwxr-xr-x.
+
+20. [admin@hostname01 Desktop]$ who | wc -l
+	2
+
+21. [admin@hostname01 Desktop]$ find . -type f -exec ls -s {} + | sort -n | head -n 1
+
+22. [admin@hostname01 Desktop]$ wc -l friends
+
+23. [admin@hostname01 Desktop]$ echo "1001|Virat Kohli               |SE|IT          |19900101|50000" > emp.lst
+[admin@hostname01 Desktop]$ echo "1002|Rohit Sharma          |TL|HR          |19850515|60000" > emp.lst
+[admin@hostname01 Desktop]$ echo "1003|Jasprit Bumrah        |SE|IT          |19930620|45000" > emp.lst
+[admin@hostname01 Desktop]$ echo "1004|Ravindra Jadeja       |HR|ADMIN       |19921012|65000" > emp.lst
+[admin@hostname01 Desktop]$ echo "IT|Information|1001" > dept.lst
+[admin@hostname01 Desktop]$ echo "HR|HumanRes  |1002" > dept.lst
+[admin@hostname01 Desktop]$ echo "ADMIN|AdminDept"|1004"> dept.lst
+	1. [admin@hostname01 Desktop]$ awk '{print length ($0)}' emp.lst
+	60
+	60
+	58
+	58
+
+	[admin@hostname01 Desktop]$ awk '{print length ($0)}' dept.lst
+	19
+	18
+	20
+
+	[admin@hostname01 Desktop]$ awk '{print length ($0)}' design.lst
+	15
+	12
+	14
+
+	
+	2. [admin@hostname01 Desktop]$ tail -1 emp.lst | awk -F"|" '{print $5, $6}'
+	19921012 65000
+
+	3. [admin@hostname01 Desktop]$ cut -c6-23,25-26 emp.lst > cfile1         
+	
+
+	4. [admin@hostname01 Desktop]$ awk -F"|" '{print $1, $4, $5, $6}' emp.lst > cfile2
+	
+
+	5. [admin@hostname01 Desktop]$ paste -d"|" cfile1 cfile2 > combined_file
+
+	6. [admin@hostname01 Desktop]$ sort -t"|" -k2,2r emp.lst
+	1001|Virat Kohli         	 |SE|IT          |19900101|50000" 
+	1002|Rohit Sharma          |TL|HR          |19850515|60000" 
+	1004|Ravindra Jadeja       |HR|ADMIN       |19921012|65000
+	1003|Jasprit Bumrah        |SE|IT          |19930620|45000
+
+	7. [admin@hostname01 Desktop]$ sort -t"|" -k6,6n emp.lst > srtf
+ 	1003|Jasprit Bumrah        |SE|IT          |19930620|45000
+	1001|Virat Kohli         	 |SE|IT          |19900101|50000" 
+	1002|Rohit Sharma          |TL|HR          |19850515|60000" 
+	1004|Ravindra Jadeja       |HR|ADMIN       |19921012|65000
+
+	8. [admin@hostname01 Desktop]$ sort -t"|" -k3,3 -k2,2 emp.lst
+	1004|Ravindra Jadeja       |HR|ADMIN       |19921012|65000
+	1003|Jasprit Bumrah        |SE|IT          |19930620|45000
+	1001|Virat Kohli         	 |SE|IT          |19900101|50000" 
+	1002|Rohit Sharma          |TL|HR          |19850515|60000" 
+
+	9. [admin@hostname01 Desktop]$ sort -t"|" -k5.1,5.4  emp.lst
+	1002|Rohit Sharma          |TL|HR          |19850515|60000" 
+	1001|Virat Kohli         	 |SE|IT          |19900101|50000" 
+	1004|Ravindra Jadeja       |HR|ADMIN       |19921012|65000
+	1003|Jasprit Bumrah        |SE|IT          |19930620|45000
+ 
+
+	10.  [admin@hostname01 Desktop]$ awk -F"|" '{print $3}' emp.lst | sort -u
+		HR
+		SE
+		TL
+
+	11. [admin@hostname01 Desktop]$ awk -F "|" '{print $3}' emp.lst | sort | uniq -u
+		HR
+		TL
+
+
+	12. [admin@hostname01 Desktop]$ awk -F "|" '{print $3}' emp.lst | sort | uniq -c
+     	 1 HR
+      	2 SE
+      	1 TL
+
+	13. [admin@hostname01 Desktop]$ awk -F "|" '{print substr($5, 1, 4)}' emp.lst | sort | uniq -c
+      1 1985
+      1 1990
+      1 1992
+      1 1993
+
+	14. [admin@hostname01 Desktop]$ awk -F"|" '{print $3}' emp.lst | sort -u | nl -v100 -i5
+   100	HR
+   105	SE
+   110	TL
+
+Mumbau, Ttc, Pune
+
+1. [admin@hostname01 Desktop]$ grep "Manu Sharma" mumbai.lst
+3001|Manu Sharma|Manager|H/W| 19871119
+
+2. [admin@hostname01 Desktop]$ grep "Manu Sharma" mumbai.lst | awk -F"|" '{print $1, $4}'
+3001 H/W
+
+3. [admin@hostname01 Desktop]$ grep "|Manager|" pune.lst mumbai.lst ttc.lst
+pune.lst:1002|Rajesh Kumar       |Manager| HR           |19820203|45000
+pune.lst:1003|Anil Verma       |Manager| H/W            |19870101|60000
+mumbai.lst:3001|Manu Sharma|Manager|H/W| 19871119
+
+4. [admin@hostname01 Desktop]$ grep "|S.E|" pune.lst | wc -l
+2
+[admin@hostname01 Desktop]$ grep "|S.E|" mumbai.lst | wc -l
+1
+[admin@hostname01 Desktop]$ grep "|S.E|" ttc.lst | wc -l
+0
+
+5. [admin@hostname01 Desktop]$ grep -n "|H/W|" pune.lst | awk -F"|" '{print $1, $2}'
+
+6. [admin@hostname01 Desktop]$ grep -v "|HR|" mumbai.lst > nonhr
+
+7. [admin@hostname01 Desktop]$ grep -v "|Manager|" pune.lst ttc.lst mumbai.lst | sort -t"|" -k5,5r | head -1 | awk -F"|" '{print $2, $3}'
+Seema Sharma S.E
+
+8. [admin@hostname01 Desktop]$ grep -1 "Seema Sharma" pune.lst ttc.lst mumbai.lst
+mumbai.lst-3001|Manu Sharma|Manager|H/W| 19871119
+mumbai.lst:3002|Seema Sharma|S.E|HR|19960312|42000
+
+9. [admin@hostname01 Desktop]$ grep -iE "saxena|saksena" mumbai.lst
+
+10. [admin@hostname01 Desktop]$ awk -F"|" '$3=="Manager" && $6>=50000 && $6<= 9999 {count++} END {print count}' pune.lst
+
+11. [admin@hostname01 Desktop]$ awk -F"|" '$1 >= 2000 && $1 <= 2999 {print $2}' pune.lst
+[admin@hostname01 Desktop]$ awk -F"|" '$1 >= 2000 && $1 <= 2999 {print $2}' mumbai.lst
+[admin@hostname01 Desktop]$ awk -F"|" '$1 >= 2000 && $1 <= 2999 {print $2}' ttc.lst
+Arun Rao 
+Virat Kohli
+Rohit Sharma
+
+12. [admin@hostname01 Desktop]$ awk -F"|" 'substr($5, 5, 2)=="01" {print $2}' pune.lst
+Ranbir Kapor       
+Anil Verma 
+
+13. [admin@hostname01 Desktop]$ grep -vE "HR|Admin" pune.lst ttc.lst mumbai.lst > F1
+
+14. [admin@hostname01 Desktop]$ grep -iE "dwivedi|trivedi|chaturvedi" pune.lst
+
+15. [admin@hostname01 Desktop]$ grep -E "|HR|Admin|Recr|" pune.lst ttc.lst mumbai.lst | sort -t"|" -k4,4r 
+mumbai.lst:3001|Manu Sharma|Manager|H/W| 19871119
+pune.lst:1004|Preeti Roy       |S.E| H/W                |19920607|75000
+pune.lst:1001|Ranbir Kapor       |S.E| H/W               |19900101|50000
+pune.lst:1003|Anil Verma       |Manager| H/W            |19870101|60000
+ttc.lst:2004|Rohit Sharma| S.E | H/W | 19930217|52000
+ttc.lst:2001|Arun Rao | S.E | H/W|19881204|48000
+mumbai.lst:3002|Seema Sharma|S.E|HR|19960312|42000
+pune.lst:1002|Rajesh Kumar       |Manager| HR           |19820203|45000
+ttc.lst:2003|Virat Kohli| Manager | HR| 19810518 | 95000
+
+25. [admin@hostname01 Desktop]$ date +"%T %Z %a %d %b %Y"
+12:31:14 IST Thu 30 Jan 2025
+
+26. [admin@hostname01 Desktop]$ ls -l | awk '{print $2, $9}'| sort -rn | awk '{print $2}'
+
+demo
+ttc.lst
+srtf
+sizes
+pune.lst
+perms
+nonhr
+mumbai.lst
+Isdoc
+files
+F1
+errorlog.txt
+emp.lst
+dir
+design.lst
+dept.lst
+demofile
+combined_file
+cfile2
+cfile1
+
+27. [admin@hostname01 Desktop]$ ls -p | grep -v "/" | sort
+cfile1
+cfile2
+combined_file
+demofile
+dept.lst
+design.lst
+dir
+emp.lst
+errorlog.txt
+F1
+files
+Isdoc
+mumbai.lst
+nonhr
+perms
+pune.lst
+sizes
+srtf
+ttc.lst
+
+28. [admin@hostname01 Desktop]$ ls -lS | awk '{print $5, $9}'
+ 
+518 dir
+370 F1
+253 pune.lst
+240 emp.lst
+240 srtf
+136 cfile2
+136 ttc.lst
+126 perms
+84 cfile1
+81 files
+79 mumbai.lst
+60 dept.lst
+54 combined_file
+44 design.lst
+41 errorlog.txt
+39 nonhr
+25 sizes
+6 demo
+0 demofile
+0 Isdoc
+
+29. [admin@hostname01 Desktop]$ ls -lt | awk 'NR==2 {print $9}'
+F1

@@ -1,0 +1,339 @@
+1. #!/bin/bash
+
+for i in {1..4}
+do
+        for j in $(seq 1 $i)
+        do
+                echo -n "*"
+        done
+        echo
+done
+ 	[admin@hostname01 Desktop]$ ./triangle.sh
+*
+**
+***
+****
+
+2. #!/bin/bash
+
+echo"Enter your first name:"
+read fname
+echo"Enter your middle name:"
+read mname
+echo"Enter your last name:"
+read lname
+
+echo "Hello $fname $mname $lname Welcome!"
+
+
+[admin@hostname01 Desktop]$ ./names_data.sh 
+./names_data.sh: line 3: echoEnter your first name:: command not found
+Sheryas
+./names_data.sh: line 5: echoEnter your middle name:: command not found
+Sham
+./names_data.sh: line 7: echoEnter your last name:: command not found
+Kulthe
+Hello Sheryas Sham Kulthe Welcome!
+
+
+3. #!/bin/bash
+
+echo "Files in the current directory:"
+ls -lh | awk '{print $9, $5}'
+
+max_file=$(ls -S | head -1)
+max_size=$(ls -lS | head -2 | tail -1 | awk '{print $5}')
+
+min_file=$(ls -S | tail -1)
+min_size=$(ls -l | sort -nk5 | head -1 | awk '{print $5}')
+
+echo
+echo"File with maximum size: $max_file ($max_size bytes)"
+echo"File with minimum size: $min_file ($min_size bytes)"
+
+[admin@hostname01 Desktop]$ ./sizes.sh
+Files in the current directory:
+ 
+cfile1 84
+cfile2 136
+combined_file 54
+demo 6
+demofile 0
+dept.lst 60
+design.lst 44
+dir 518
+emp.lst 240
+errorlog.txt 41
+F1 370
+files 81
+Isdoc 0
+mumbai.lst 79
+names_data 0
+names_data.sh 178
+nonhr 39
+perms 126
+pune.lst 253
+sizes 25
+sizes.sh 379
+srtf 240
+triangle,sh 0
+triangle.sh 90
+ttc.lst 136
+
+4, #!/bin/bash
+
+day=$(date +%u)
+
+if [ $day -ge 1 ] && [ $day -le 5 ]; then
+        echo "It is a working day."
+     else
+        echo"It is not a working day."
+fi
+
+[admin@hostname01 Desktop]$ chmod +x check_working_day.sh 
+[admin@hostname01 Desktop]$ ./check_working_day.sh 
+It is a working day.
+
+5. #!/bin/bash
+
+accept_member(){
+        if [ $1 -ge 30 ] && [ $1 -le 250 ]; then
+                echo "Welcome to HP Health Club!"
+        else
+                echo"Sorry, your weight is not within the allowed range."
+        fi
+}
+
+read -p "Enter your weight in kg: " weight
+
+accept_member $weight
+
+
+[admin@hostname01 Desktop]$ ./weight 
+Enter your weight in kg: 53 
+Welcome to HP Health Club!
+
+
+6. #!/bin/bash
+
+current_hour=$(date +"%H")
+if [ "$current_hour" -ge 0 ] && [ "$current_hour" -lt 12 ]; then
+        echo "Good Morning!"
+elif [ "$current_hour" -ge 12 ] && [ "$curent_hour" -lt 12 ]; then
+        echo "Good Afternoon!"
+else
+        echo "Good Evening!"
+
+[admin@hostname01 Desktop]$ ./greetings 
+Good Evening!
+
+7. #!/bin/bash
+
+modify_record(){
+        read -p "Enter Roll Number: " rollno
+
+        record=$(grep "^$rollno:" srecord.txt)
+
+        if [ -2 "$record" ]; then
+                echo "Record Found: $record"
+
+                IFS=':' read -r old_rollno old_name old_marks1 old_marks2 old_marks3 <<< "$record"
+
+                read -p "Enter new name (old: name): " new_name
+                read -p "Enter new marks for subject 1 (old: $old_marks1): " new_marks1
+                read -p "Enter new marks for subject 2 (old: $old_marks2): " new_marks2
+                read -p "Enter new marks for subject 3 (old: $old_marks3): " new_marks3
+
+                new_name=${new_name:-$old_name}
+                new_marks1=${mew_marks1:-$old_marks1}
+                new_marks2=${mew_marks2:-$old_marks2}
+                new_marks1=${mew_marks3:-$old_marks3}
+
+                sed -i "s/^rollno:.*$/$rollno:$new_name:$new_name:$new_marks1:$new_marks2:$new_marks3/" srecord.txt
+                echo "Record updates successfully!"
+        else
+                echo "Roll no not found"
+        fi
+}
+while true; do
+        modify_record
+read -p "Do you want to modify another record? (y/n): " choice
+        if [ "$choice" != "y" ]; then
+                echo "Exiting the script."
+                break
+        fi
+done
+
+8. #!/bin/bash
+
+modify_record(){
+        roolno=$1
+        if [ -z "$rollno" ]; then
+                echo "Error: No roll number provided."
+
+        record=$(grep "^$rollno:" srecord.txt)
+
+        if [ -n "$record" ]; then
+                echo "Record Found: $record"
+
+                IFS=':' read -r old_rollno old_name old_marks1 old_marks2 old_marks3 <<< "$record"
+
+                read -p "Enter new name (old: name): " new_name
+                read -p "Enter new marks for subject 1 (old: $old_marks1): " new_marks1
+                read -p "Enter new marks for subject 2 (old: $old_marks2): " new_marks2
+                read -p "Enter new marks for subject 3 (old: $old_marks3): " new_marks3
+
+                new_name=${new_name:-$old_name}
+                new_marks1=${mew_marks1:-$old_marks1}
+	new_marks2=${mew_marks2:-$old_marks2}
+                new_marks1=${mew_marks3:-$old_marks3}
+
+                sed -i "s/^rollno:.*$/$rollno:$new_name:$new_name:$new_marks1:$new_marks2:$new_marks3/" srecord.txt
+                echo "Record updates successfully!"
+        else
+                echo "Roll no not found"
+        fi
+}
+while true; do
+        modify_record
+        read -p "Do you want to modify another record? (y/n): " choice
+        if [ "$choice" != "y" ]; then
+                echo "Exiting the script."
+                break
+        fi
+done
+
+9. #!/bin/bash
+ 
+delete_record() {
+   
+    rollno=$1
+ 
+    
+    if [ -z "$rollno" ]; then
+        echo "Error: No roll number provided."
+        exit 1
+    fi
+ 
+   
+    record=$(grep "^$rollno:" file.txt)
+ 
+    
+    if [ -n "$record" ]; then
+        echo "Record Found: $record"
+ 
+        
+        read -p "Do you want to delete this record? (y/n): " confirm
+ 
+        if [ "$confirm" == "y" ]; then
+            # Delete the record from the file
+            sed -i "/^$rollno:/d" file.txt
+            echo "Record deleted successfully!"
+        else
+            echo "Deletion cancelled."
+        fi
+    else
+        echo "Roll No Not Found"
+    fi
+}
+ 
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <roll_number>"
+    exit 1
+fi
+ 
+delete_record "$1"
+
+10. #!/bin/bash
+ 
+if [ $# -ne 1 ]; then
+    echo "Error: Please provide exactly one argument."
+    exit 1
+fi
+ 
+file="$1"
+ 
+if [ -e "$file" ]; then
+    if [ -f "$file" ]; then
+        echo "$file is a regular file."
+    elif [ -d "$file" ]; then
+        echo "$file is a directory."
+    elif [ -L "$file" ]; then
+        echo "$file is a symbolic link."
+    elif [ -b "$file" ]; then
+        echo "$file is a block device."
+    elif [ -c "$file" ]; then
+        echo "$file is a character device."
+    elif [ -p "$file" ]; then
+        echo "$file is a named pipe (FIFO)."
+    elif [ -S "$file" ]; then
+        echo "$file is a socket."
+    else
+        echo "$file is of an unknown file type."
+    fi
+else
+    echo "$file does not exist."
+fi
+
+11. #!/bin/bash
+
+process_record(){
+
+rollno=$1
+name=$2
+marks_hindi=$3
+marks_maths=$4
+marks_physics=$5
+
+if grep -q "^$rollno:" student; then
+        echo "$rollno:$name:$marks_hindi:$marks_maths:$marks_physics - rRoll number exists" > log1
+        echo"Roll number exists. Entry logged"
+        return
+fi
+
+if [ "$marks_hindi" -lt 1 ] || [ "$marks_hindi" -gt 99 ] || \
+        [ "$marks_maths" -lt 1 ] || ["$marks_maths" -gt 99] || \
+        [ "$marks_physics" -lt 1 ] || [ "$marks_physics" -gt 99  ]; then
+        echo"$rollno:$name:$marks_hindi:$marks_maths:$marks_physics - Marks out of range" > log1
+        echo"Marks out of range. Entry logged"
+        return
+fi
+
+total=$((marks_hindi + marks_maths + marks_physics))
+percentage=$(echo "scale=2; $total / 3" | bc)
+
+if[ "$(echo "$percentage >= 90" | bc)" -eq 1 ]; then
+        grade="A"
+elif [ "$(echo "$percentage >= 75" | bc)" -eq 1 ]; then
+        grade=B"
+elif [ "$(echo "$percentage >= 50" | bc)" -eq 1 ]; then
+        grade=C"
+else
+        grade="D"
+fi
+
+echo "$rollno:$name:$marks_hindi:$marks_maths:$marks_physics" > student
+
+echo "Record added successfully:"
+echo "RollNo: $rollno"
+echo "Name: $name"
+echo "Total marks: $total"
+echo "Percentage: $percentage%"
+echo "Grade: $grade"
+}
+
+echo "Enter Rol Number: "
+read rollno
+echo "Enter Name: "
+read name
+echo"Enter Marks in Hindi: "
+read marks_hindi
+echo "Enter marks in Maths: "
+read marks_maths
+echo "Enter Marks in Physics: "
+read marks_physics
+
+
+process_record $rollno" "$name" "$marks_hindi" "$marks_maths" "$marks_physics"
+
+                                 
